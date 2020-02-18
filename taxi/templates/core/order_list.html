@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Orders</title>
+</head>
+<body>
+<a href="{% url 'logout' %}">Logout</a>
+{% for order in order_list %}
+<div>
+<li>
+<a href="{{ order.get_absolute_url }}"><h3>Имя клиента: {{ order.name|title }} </h3></a>
+    <p>Адрес отправления: {{ order.address_from|title }}</p>
+</li>
+</div>
+{% endfor %}
+
+{% if order_list.has_previous %}
+  <a href="?page={{ order_list.previous_page_number }}"><</a>
+{% endif %}
+
+{% for page in order_list.paginator.page_range %}
+  {% if page == order_list.number %}
+    {{ page }}
+  {% else %}
+    <a href="?page={{ page }}">{{ page }}</a>
+  {% endif %}
+{% endfor %}
+
+{% if order_list.has_next %}
+  <a href="?page={{  order_list.next_page_number }}">></a>
+{% endif %}
+
+</body>
+</html>

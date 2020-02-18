@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h2>Имя клиента: {{ order.name|title}}, ID: {{ order.id }}</h2>
+
+<li>Номер телефона: {{ order.tel }}</li>
+<li>Адрес отправления: {{ order.address_from }}</li>
+<li>Адрес прибытия: {{ order.address_to }}</li>
+<li>Желаемое время подачи: {{ order.desired_time }}</li>
+<li>Закрепленное авто: {{ order.car }}</li>
+
+<a href="{% url 'core:end_order' %}">End order</a>
+
+</body>
+</html>
